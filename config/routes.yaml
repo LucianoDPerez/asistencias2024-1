@@ -1,0 +1,33 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+    prefix: /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
+
+app_client_importcsv:
+    path : /{_locale}/client/test
+    controller : App\Controller\ClientController::importCsv
+
+app_client_index:
+    path: /{_locale}/client
+    controller: App\Controller\ClientController::index
+
+app_client_new:
+    path: /{_locale}/client/new
+    controller: App\Controller\ClientController::new
+
+app_client_edit:
+    path: /{_locale}/client/{id}/edit
+    controller: App\Controller\ClientController::edit
+    requirements:
+        id: \d+
+
+app_client_delete:
+    path: /{_locale}/client/{id}/delete
+    controller: App\Controller\ClientController::delete
+    requirements:
+        id: \d+
+        _method: DELETE

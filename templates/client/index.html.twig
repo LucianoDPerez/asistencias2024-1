@@ -1,0 +1,50 @@
+{% extends 'admin/bars.html.twig' %}
+
+{% block contenpage %}
+    <div class="">
+        <div class="page-title">
+            <div class="title_left"><h5><a
+                            href="{{ path('app_client_index') }}">{{ "backend.client.listing"|trans }}</a></h5></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title"><h2>{{ "backend.menu.client"|trans }}</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a href="{{ path('app_client_new') }}" class="btn btn-success">NEW</a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="table-index" class="dataminetables">
+                            <thead>
+                            <tr>
+                                <th>{{ "backend.client.name"|trans }}</th>
+                                <th>{{ "backend.client.phone"|trans }}</th>
+                                <th>{{ "backend.client.address"|trans }}</th>
+                                <th>Service</th>
+                                <th>Ip</th>
+
+                                <th>{{ "backend.client.actions"|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody> {% for client in clients %}
+                                <tr>
+                                    <td>{{ client.name }}</td>
+                                    <td>{{ client.phone }}</td>
+                                    <td>{{ client.address }}</td>
+                                    <td>{{ client.service }}</td>
+                                    <td>{{ client.ip }}</td>
+                                    <td>
+                                        <a href="{{ path('app_client_edit', {'id': client.id}) }}">{{ "backend.client.edit"|trans }}</a>
+                                        <a href="{{ path('app_client_delete', {'id': client.id}) }}">{{ "backend.client.delete"|trans }}</a>
+                                    </td>
+                                </tr> {% endfor %} </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div> {% endblock %}
