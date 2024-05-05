@@ -8,5 +8,5 @@ return array (
   'LOCALE' => 'es',
   'APP_DEBUG' => 'false',
   'MAILER_DSN' => 'smtp://localhost',
-  'DATABASE_URL' => 'mysql://root:luchop84@127.0.0.1:3306/asistencias2024?serverVersion=mariadb-10.4.11',
+  'DATABASE_URL' => 'mysql://root:KI16zusemu@66.97.44.182:3306/asistencias2024?serverVersion=mariadb-10.4.11',
 );
