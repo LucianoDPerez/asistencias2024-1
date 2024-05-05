@@ -16,15 +16,17 @@
         "stof/doctrine-extensions-bundle": "^1.4",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "6.2.*",
+        "symfony/asset-mapper": "^6.3",
         "symfony/console": "6.2.*",
         "symfony/debug-bundle": "6.2.*",
         "symfony/dotenv": "6.2.*",
-        "symfony/flex": "^2.1",
+        "symfony/flex": "*",
         "symfony/form": "6.2.*",
         "symfony/framework-bundle": "6.2.*",
         "symfony/intl": "6.2.*",
         "symfony/mailer": "6.2.*",
         "symfony/monolog-bundle": "^3.0",
+        "symfony/requirements-checker": "^2.0",
         "symfony/runtime": "6.2.*",
         "symfony/security-bundle": "6.2.*",
         "symfony/serializer": "6.2.*",
@@ -78,8 +80,10 @@
     },
     "scripts": {
         "auto-scripts": {
+            "vendor/bin/requirements-checker": "php-script",
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "requirements-checker": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"
