@@ -1,0 +1,57 @@
+{% extends 'admin/bars.html.twig' %}
+
+{% block contenpage %}
+    <div class="">
+        <div class="page-title">
+            <div class="title_left"><h5><a
+                            href="{{ path('app_technicalreport_index') }}">Descargos Tecnico</a></h5></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title"><h2>Servicios - Descargos</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            {# <li><a href="{{ path('app_technicalreport_new') }}" class="btn btn-success">NEW</a></li>  #}
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="table-index" class="dataminetables">
+                            <thead>
+                            <tr>
+                                <th>Responsable</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Clienteth>
+                                <th>Descargo</th>
+                                <th>Finalizado</th>
+                                <th>Fecha Fin</th>
+                                <th>Tiempo Respuesta</th>
+
+                                <th>{{ "backend.client.actions"|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody> {% for techReport in techReports %}
+                                <tr>
+                                    <td>{{ techReport.user.username }}</td>
+                                    <td>{#  { techReport.service.assignedDate.format('Y-m-d') }#}</td>
+                                    <td>{# { techReport.service.assignedTime.format('H:i') }#}</td>
+                                    <td>{{ techReport.service.client.name }}</td>
+                                    <td>{{ techReport.content }}</td>
+                                    <td>{{ techReport.closed }}</td>
+                                    <td>{# { techReport.createdAt }#}</td>
+                                    <td>{{ techReport.responseTime }}</td>
+                                    {% if is_granted('ROLE_SUPERUSER') or is_granted('ROLE_ADMINISTRATOR') %}
+                                        <td>
+                                            <a href="{{ path('app_service_edit', {'id': techReport.id}) }}">Editar</a>
+                                            <a href="{{ path('app_service_delete', {'id': techReport.id}) }}">Eliminar</a>
+                                        </td>
+                                    {% endif %}
+                                </tr> {% endfor %} </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endblock %}

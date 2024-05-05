@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ClientRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
@@ -34,6 +36,14 @@ class Client
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private DateTimeInterface $updatedAt;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Service::class, orphanRemoval: true)]
+    private Collection $services;
+
+    public function __construct()
+    {
+        $this->services = new ArrayCollection();
+    }
 
     /**
      * @PrePersist
@@ -160,7 +170,6 @@ class Client
         $this->updatedAt=$updatedAt;
     }
 
-
     /**
      * @return DateTimeInterface
      */
@@ -169,4 +178,30 @@ class Client
         return $this->updatedAt;
     }
 
+    public function addService(Service $service): self
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+            $service->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): self
+    {
+        if ($this->services->contains($service)) {
+            $this->services->removeElement($service);
+            if ($service->getClient() === $this) {
+                $service->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName() ?? '';
+    }
 }

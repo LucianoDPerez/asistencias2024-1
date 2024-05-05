@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Client;
-use App\Form\ClientImportType;
-use App\Form\ClientType;
+use App\Form\ClientImportFormType;
+use App\Form\ClientFromType;
 use Doctrine\ORM\EntityManagerInterface;
 use League\Csv\Reader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +22,7 @@ class ClientController extends AbstractController
      */
     public function importCsv(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ClientImportType::class);
+        $form = $this->createForm(ClientImportFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,7 +88,7 @@ class ClientController extends AbstractController
     {
         $client = new Client();
 
-        $form = $this->createForm(ClientType::class, $client);
+        $form = $this->createForm(ClientFromType::class, $client);
 
         $form->handleRequest($request);
 
@@ -108,7 +108,7 @@ class ClientController extends AbstractController
 
     public function edit(Request $request, Client $client, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ClientType::class, $client);
+        $form = $this->createForm(ClientFromType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

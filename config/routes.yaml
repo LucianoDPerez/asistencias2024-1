@@ -31,3 +31,69 @@ app_client_delete:
     requirements:
         id: \d+
         _method: DELETE
+
+app_servicetype_index:
+    path: /{_locale}/service-type
+    controller: App\Controller\ServiceTypeController::index
+
+app_servicetype_new:
+    path: /{_locale}/service-type/new
+    controller: App\Controller\ServiceTypeController::new
+
+app_servicetype_edit:
+    path: /{_locale}/service-type/{id}/edit
+    controller: App\Controller\ServiceTypeController::edit
+    requirements:
+        id: \d+
+
+app_servicetype_delete:
+    path: /{_locale}/service-type/{id}/delete
+    controller: App\Controller\ServiceTypeController::delete
+    requirements:
+        id: \d+
+        _method: DELETE
+
+app_service_index:
+    path: /{_locale}/service
+    controller: App\Controller\ServiceController::index
+app_service_show:
+    path : /{_locale}/service/{id}/show
+    controller : App\Controller\ServiceController::show
+app_service_new:
+    path: /{_locale}/service/new
+    controller: App\Controller\ServiceController::new
+
+app_service_edit:
+    path: /{_locale}/service/{id}/edit
+    controller: App\Controller\ServiceController::edit
+    requirements:
+        id: \d+
+
+app_service_delete:
+    path: /{_locale}/service/{id}/delete
+    controller: App\Controller\ServiceController::delete
+    requirements:
+        id: \d+
+        _method: DELETE
+
+app_technicalreport_index:
+    path: /{_locale}/technical-report
+    controller: App\Controller\TechnicalReportController::index
+
+app_technicalreport_new:
+    path: /{_locale}/technical-report/{service}/new
+    controller: App\Controller\TechnicalReportController::new
+
+app_technicalreport_edit:
+    path: /{_locale}/technical-report/{id}/edit
+    controller: App\Controller\TechnicalReportController::edit
+    requirements:
+        id: \d+
+
+app_technicalreport_delete:
+    path: /{_locale}/technical-report/{id}/delete
+    controller: App\Controller\TechnicalReportController::delete
+    requirements:
+        id: \d+
+        _method: DELETE
+

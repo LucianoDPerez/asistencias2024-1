@@ -1,0 +1,47 @@
+{% extends 'admin/bars.html.twig' %}
+
+{% block contenpage %}
+    <div class="container mt-5">
+        <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.client.name }}</h5>
+                            <p class="card-text"><strong>Tipo de Servicio:</strong> {{ service.serviceType.name }}</p>
+                            <p class="card-text"><strong>Fecha Asignada:</strong> {{ service.assignedDate|date('Y-m-d') }}</p>
+                            <p class="card-text"><strong>Hora:</strong> {{ service.assignedTime|date('H:i') }}</p>
+                            <p class="card-text"><strong>Dirección:</strong> {{ service.client.address }}</p>
+                            <p class="card-text"><strong>Teléfono:</strong> {{ service.client.phone }}</p>
+                            <p class="card-text"><strong>Descripción:</strong> {{ service.description }}</p>
+                            <p class="card-text"><strong>Estado:</strong> {{ service.status }}</p>
+
+                            <h6 class="mt-4">Informes Técnicos:</h6>
+
+                            {% if service.technicalReports is not empty %}
+                                {% for technicalReport in service.technicalReports %}
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            {% if technicalReport.createdAt  is not null %}
+                                                <p><strong>Fecha Asistencia:</strong> {{ technicalReport.createdAt|date('Y-m-d H:i') }}</p>
+                                            {% endif %}
+                                            <p><strong>Tiempo de Respuesta:</strong> {{ technicalReport.responseTime|number_format(2, '.', ':') }}</p>
+                                            <p><strong>Contenido:</strong> {{ technicalReport.content }}</p>
+                                            <p><strong>Cerrado:</strong> {{ technicalReport.closed ? 'Sí' : 'No' }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p>No hay informes técnicos disponibles.</p>
+                            {% endif %}
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{{ path('app_service_show', {'id': service.id}) }}" class="btn btn-sm btn-primary">Ver</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'admin/bars.html.twig' %}
+
+{% block contenpage %}
+    <div class="">
+        <div class="page-title">
+            <div class="title_left"><h5><a
+                            href="{{ path('app_servicetype_index') }}">Listado de Tipos de Servicios</a></h5></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title"><h2>Tipos de Servicios</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a href="{{ path('app_servicetype_new') }}" class="btn btn-success">NEW</a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="table-index" class="dataminetables">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+
+                                <th>{{ "backend.client.actions"|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody> {% for serviceType in serviceTypes %}
+                                <tr>
+                                    <td>{{ serviceType.name }}</td>
+                                    <td>{{ serviceType.description }}</td>
+                                    <td>
+                                        <a href="{{ path('app_servicetype_edit', {'id': serviceType.id}) }}">Editar</a>
+                                        <a href="{{ path('app_servicetype_delete', {'id': serviceType.id}) }}">Eliminar</a>
+                                    </td>
+                                </tr> {% endfor %} </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endblock %}

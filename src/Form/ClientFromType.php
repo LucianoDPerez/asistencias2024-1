@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
-class ClientType extends AbstractType
+class ClientFromType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)

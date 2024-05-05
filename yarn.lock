@@ -20,10 +20,59 @@
     "datatables.net" "2.0.5"
     "jquery" ">=1.7"
 
-"datatables.net@^2.0.5", "datatables.net@2.0.5":
+"datatables.net-dt@^2", "datatables.net-dt@>=1.11.0":
+  "integrity" "sha512-vhTW0PQac1KSs4SjItMDi11meLIW7tWCLO/NP9EkNqVbqvOHkLNOOjFFYclzVOkA9nXPdiUk4svK7Bx5w9JFVw=="
+  "resolved" "https://registry.npmjs.org/datatables.net-dt/-/datatables.net-dt-2.0.6.tgz"
+  "version" "2.0.6"
+  dependencies:
+    "datatables.net" "2.0.6"
+    "jquery" ">=1.7"
+
+"datatables.net-responsive-dt@^3.0.2":
+  "integrity" "sha512-wxqs/rCVDlIwKXrSy8AG0E5pPvlJBy37xLUt1rc+59qFNY7hDrhSEZXuDgQZmQl2IVRG7ED853dc6OBl3bjwZg=="
+  "resolved" "https://registry.npmjs.org/datatables.net-responsive-dt/-/datatables.net-responsive-dt-3.0.2.tgz"
+  "version" "3.0.2"
+  dependencies:
+    "datatables.net-dt" "^2"
+    "datatables.net-responsive" "3.0.2"
+    "jquery" ">=1.7"
+
+"datatables.net-responsive@3.0.2":
+  "integrity" "sha512-OVsrTfcYvT8YtnOeCef51veKc+DABVPWOypvID+xFzCgyBDCIgcauTk+H5zItOscXw/CwSIbGN9zD6Sxa7lZPA=="
+  "resolved" "https://registry.npmjs.org/datatables.net-responsive/-/datatables.net-responsive-3.0.2.tgz"
+  "version" "3.0.2"
+  dependencies:
+    "datatables.net" "^2"
+    "jquery" ">=1.7"
+
+"datatables.net-rowreorder-dt@^1.5.0":
+  "integrity" "sha512-CE2pvJunCgc3HAIHQAlZ3OB6u4y7ytFHjeArvZdLrFkUmx+HcJY+GdXrH+lbuuV6rYGsjb9MHop4cZn8KYRJWA=="
+  "resolved" "https://registry.npmjs.org/datatables.net-rowreorder-dt/-/datatables.net-rowreorder-dt-1.5.0.tgz"
+  "version" "1.5.0"
+  dependencies:
+    "datatables.net-dt" ">=1.11.0"
+    "datatables.net-rowreorder" "1.5.0"
+    "jquery" ">=1.7"
+
+"datatables.net-rowreorder@1.5.0":
+  "integrity" "sha512-Kkq57tdJHrUCYkS8vywhL5tqKtl2q3K3p8A6wkIdwMX2b8YVjtywhQbXvvVLZnlMQsdX194FXVK1AgAwcm4hFg=="
+  "resolved" "https://registry.npmjs.org/datatables.net-rowreorder/-/datatables.net-rowreorder-1.5.0.tgz"
+  "version" "1.5.0"
+  dependencies:
+    "datatables.net" ">=1.11.0"
+    "jquery" ">=1.7"
+
+"datatables.net@^2", "datatables.net@^2.0.5", "datatables.net@>=1.11.0", "datatables.net@2.0.5":
   "integrity" "sha512-Eu7z0ErFyr44hopfLQ7kyIWRdfqH2zFG93aHcnGKGrt/ICWXUsLrjUwghuN5b1pktnKzXCFYsl6Ad9WypiSNeA=="
   "resolved" "https://registry.npmjs.org/datatables.net/-/datatables.net-2.0.5.tgz"
   "version" "2.0.5"
+  dependencies:
+    "jquery" ">=1.7"
+
+"datatables.net@2.0.6":
+  "integrity" "sha512-p9hJAwBZ2svrL8sbJPsy58ERsRHOL6+eshvfYHmqV2AGgtR/2GUzFQjPlCGXcUOoXlOhymMk2g4FSJluvlqGyg=="
+  "resolved" "https://registry.npmjs.org/datatables.net/-/datatables.net-2.0.6.tgz"
+  "version" "2.0.6"
   dependencies:
     "jquery" ">=1.7"
 

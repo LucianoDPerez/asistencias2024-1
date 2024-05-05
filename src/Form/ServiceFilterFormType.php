@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\ServiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+class ServiceFilterFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('serviceType', EntityType::class, [
+                'class' => ServiceType::class,
+                'choices' => $options['service_types'],
+                'choice_label' => 'name', // Assuming ServiceType has a 'name' property
+                'label' => 'Tipo de sistencia',
+                'required' => false,
+            ])
+            ->add('dateStart', DateType::class, [
+                'label' => 'Desde',
+                'widget'=>'choice',
+                'data'=> new \DateTime('now'),
+                'format'=>'dd-MM-yyyy',
+                'html5'=>false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ],
+            ])
+            ->add('dateEnd', DateType::class, [
+                'label' => 'Desde',
+                'widget'=>'choice',
+                'data'=>new \DateTime('now'),
+                'format'=>'dd-MM-yyyy',
+                'html5'=>false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ],
+            ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'service_types' => [],
+            'data_class' => null,
+        ]);
+    }
+}

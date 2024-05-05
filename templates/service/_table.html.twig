@@ -1,0 +1,38 @@
+<table id="table-index" class="dataminetables">
+    <thead>
+    <tr>
+        <th>Tipo de Servicio</th>
+        <th>Fecha Asignada</th>
+        <th>Hora</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Descripcion</th>
+        <th>Estado</th>
+        {% if is_granted('ROLE_SUPERUSER') or is_granted('ROLE_ADMINISTRATOR') %}
+            <th>{{ "backend.client.actions"|trans }}</th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody> {% for service in services %}
+        <tr>
+            <td>{{ service.serviceType }}</td>
+            <td>{{ service.assignedDate.format('Y-m-d') }}</td>
+            <td>{{ service.assignedTime.format('H:i') }}</td>
+
+            <td><a href="{{ path('app_technicalreport_new', {'service': service.id}) }}" class="row-link">{{ service.client.name }}</a></td>
+            <td>{{ service.client.address }}</td>
+            <td>{{ service.client.phone }}</td>
+            <td>{{ service.description }}</td>
+            <td>{{ service.status }}</td>
+            {% if is_granted('ROLE_SUPERUSER') or is_granted('ROLE_ADMINISTRATOR') %}
+                <td>
+                    <a href="{{ path('app_service_show', {'id': service.id}) }}"><i class="bi bi-eye"></i></a>
+                    <a href="{{ path('app_service_edit', {'id': service.id}) }}"> <i class="bi bi-pencil"></i></a>
+                    <a href="{{ path('app_service_delete', {'id': service.id}) }}"> <i class="bi bi-trash"></i></a>
+                </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

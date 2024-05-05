@@ -36,7 +36,6 @@ class AppFixtures extends Fixture
             }
         }
 
-        dump('Paso Bien!');
         $user = new User();
         if (!$manager->find(User::class, 1)) {
             $user->setUsername('admin');

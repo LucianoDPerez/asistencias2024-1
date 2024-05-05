@@ -11,13 +11,18 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
                 <div class="profile_pic">
+
                     {% if is_granted('ROLE_ADMIN') %}
                         <img src="{{ app.user.avatarUrl() }}" alt="..." class="img-circle profile_img">
                     {% endif %}
                 </div>
                 <div class="profile_info">
                     <span>{{ "backend.global.welcome"|trans }},</span>
-                    <h2>{{ app.user.nomComplet }}</h2>
+                    {% if app.user %}
+                        <h2>{{ app.user.nomComplet }}</h2>
+                    {% else %}
+                        <h2>Guest</h2> {# Puedes mostrar un mensaje genérico si el usuario no está autenticado #}
+                    {% endif %}
                 </div>
             </div>
             <!-- /menu profile quick info -->
@@ -41,15 +46,20 @@
                                     <li><a href="{{ path('app_client_index') }}">{{ "backend.menu.manage"|trans }}</a></li>
                                 </ul>
                             </li>
-                        {% endif %}
-                        {# }% if is_granted("ROLE_WRITER") %}
-                            <li><a><i class="fa fa-bookmark"></i>{{ "backend.menu.mk_conn"|trans }} <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-user"></i> Tipos de Servicios <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{ path('app_mk_conn_index') }}">{{ "backend.menu.manage"|trans }}</a></li>
+                                    <li><a href="{{ path('app_servicetype_index') }}">{{ "backend.menu.manage"|trans }}</a></li>
                                 </ul>
                             </li>
+                        {% endif %}
+                        {% if is_granted("ROLE_EMPLOYEE") %}
+                            <li><a><i class="fa fa-user"></i>Servicios <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('app_service_index') }}">{{ "backend.menu.manage"|trans }}</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
 
-                        {% endif %#}
                         {% if is_granted("ROLE_ADMINISTRATOR") %}
 
                         {% endif %}
