@@ -9,3 +9,6 @@
 /.fleet
 /.idea
 /.vscode
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
