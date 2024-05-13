@@ -38,8 +38,8 @@ class ServicesFormType extends AbstractType
             ])
             ->add('serviceType', EntityType::class, [
                 'label' => 'Tipo de Asistencia',
-                'mapped' => false,
                 'class' => ServiceType::class,
+                'choice_label'=>'name',
                 'required' => true,
                 'placeholder' => $translator->trans('Seleccionar tipo de asistencia'),
                 'constraints' => [
