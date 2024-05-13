@@ -199,7 +199,7 @@ class User implements UserInterface, EquatableInterface, PasswordAuthenticatedUs
 
     public function __toString(): string
     {
-        return "$this->nomComplet ($this->id)";
+        return $this->nomComplet;
     }
 
     public function isAdmin(): ?bool
