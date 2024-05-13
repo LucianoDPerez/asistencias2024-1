@@ -83,8 +83,8 @@
             <nav class="nav navbar-nav">
                 <ul class=" navbar-right">
                     <li class="nav-item dropdown open" style="padding-left: 15px;">
-                        <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ app.user.avatarUrl() }}" alt="">{{ app.user.nomComplet }}
+                        <a href="javascript:" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset('avatar-user.svg') }}" alt="">{{ app.user.nomComplet }}
                         </a>
                         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item"  href="{{ path('app_admin_changepswd') }}"><i class="fa fa-key pull-right"></i>{{ "backend.global.change_my_password"|trans }}</a>

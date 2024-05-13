@@ -108,8 +108,7 @@ class ServiceController extends AbstractController
     }
 
     #[Route('/{_locale}/service/{id}/edit', name: 'app_service_edit', requirements: ['id' => '\d+'])]
-
-    public function edit(Request $request, Serviceervice $service, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Service $service, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);

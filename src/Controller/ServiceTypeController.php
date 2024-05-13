@@ -9,9 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ServiceTypeController extends AbstractController
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
+
     /**
      * @Route("/{_locale}/service-type", name="app_servicetype_index", methods={"GET"})
      */
@@ -31,7 +36,7 @@ class ServiceTypeController extends AbstractController
     {
         $serviceType = new ServiceType();
 
-        $form = $this->createForm(ServiceFormTypeType::class, $serviceType);
+        $form = $this->createForm(ServiceFormTypeType::class, $serviceType, ['translator' => $this->translator]);
 
         $form->handleRequest($request);
 
